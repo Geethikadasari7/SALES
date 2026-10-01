@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FinPath – Simple, smart money management</title>
+<meta name="description" content="Track your money, find the right financial services and decide with confidence, all in one place.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;600&display=swap">
+<style>
+:root{--bg:#EDF2F7;--ink:#10233A;--mute:#4A5C70;--card:#fff;--line:#D3DDE8;--teal:#0E7C7B;--gold:#F2A900;--on-gold:#10233A;--deep:#10233A;--on-deep:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1623;--ink:#EAF0F6;--mute:#9DB0C4;--card:#12233A;--line:#24384F;--teal:#3CC2BE;--deep:#07101A}}
+:root[data-theme="dark"]{--bg:#0B1623;--ink:#EAF0F6;--mute:#9DB0C4;--card:#12233A;--line:#24384F;--teal:#3CC2BE;--deep:#07101A}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0}
+.logo{font:800 1.4rem "Bricolage Grotesque",sans-serif;text-decoration:none}
+.logo b{color:var(--teal)}
+nav a{margin-left:1.2rem;text-decoration:none;color:var(--mute);font-weight:600}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none;background:var(--gold);color:var(--on-gold);border:2px solid var(--gold)}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn:hover{transform:translateY(-2px)}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:2.5rem;align-items:center;padding:3rem 0 4rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4.3rem);font-weight:800;letter-spacing:-.02em}
+.hero p{max-width:34rem;color:var(--mute);font-size:1.2rem;margin:1.2rem 0 1.8rem}
+.row{display:flex;flex-wrap:wrap;gap:.8rem}
+/* CSS phone */
+.phone{width:min(270px,100%);margin:0 auto;aspect-ratio:9/18;background:var(--deep);border-radius:2.4rem;padding:.7rem;box-shadow:0 30px 60px -20px rgba(16,35,58,.55);transform:rotate(3deg)}
+.screen{height:100%;background:var(--card);border-radius:1.8rem;padding:1.3rem 1rem;display:flex;flex-direction:column;gap:.9rem;color:var(--ink)}
+.screen small{color:var(--mute)}
+.ring{width:140px;aspect-ratio:1;margin:0 auto;border-radius:50%;background:conic-gradient(var(--teal) 0 62%,var(--gold) 62% 82%,var(--line) 82% 100%);display:grid;place-items:center}
+.ring span{width:98px;aspect-ratio:1;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center;font:800 1rem/1.1 "Bricolage Grotesque",sans-serif}
+.bars{display:flex;align-items:flex-end;gap:.45rem;height:70px}
+.bars i{flex:1;background:var(--teal);border-radius:5px 5px 0 0}
+.tip{background:var(--bg);border-radius:.8rem;padding:.6rem .7rem;font-size:.82rem;line-height:1.35}
+section{padding:3.5rem 0}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;margin-bottom:.6rem}
+.lead{color:var(--mute);max-width:36rem;margin:0 0 2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:1.2rem;padding:1.5rem}
+.card h3{font-size:1.3rem;margin-bottom:.5rem}
+.card p{margin:0;color:var(--mute)}
+.pain{display:block;font-size:.95rem;font-weight:600;color:var(--teal);margin-bottom:.8rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;counter-reset:s}
+.steps div{counter-increment:s;border-top:4px solid var(--teal);padding-top:1rem}
+.steps div::before{content:counter(s);font:800 2rem "Bricolage Grotesque",sans-serif;color:var(--teal)}
+.steps h3{font-size:1.2rem;margin:.2rem 0 .4rem}
+.steps p{margin:0;color:var(--mute)}
+.band{background:var(--deep);color:var(--on-deep);border-radius:1.8rem;padding:3rem 2rem;text-align:center}
+.band p{color:#B9C8D8;max-width:32rem;margin:.6rem auto 1.6rem}
+.band .row{justify-content:center}
+.band .alt{color:#fff;border-color:#fff}
+.who{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.who li{padding:1rem 1.2rem;border-left:4px solid var(--gold);background:var(--card);border-radius:0 .8rem .8rem 0}
+.who b{display:block}
+footer{padding:2.5rem 0 3rem;color:var(--mute);border-top:1px solid var(--line);margin-top:3rem}
+footer .grid{margin-bottom:1.5rem}
+footer h3{color:var(--ink);font-size:1.1rem;margin-bottom:.4rem}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.phone{order:-1;max-width:220px}nav a:not(.btn){display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top">Fin<b>Path</b></a>
+    <nav><a href="#features">Features</a><a href="#how">How it works</a><a href="#contact">Contact</a><a class="btn" href="#contact">Book a demo</a></nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>Know where your money goes. Know where to take it next.</h1>
+        <p>FinPath puts your tracking, personal insights and trusted financial services in one simple app, so you decide with confidence instead of guesswork.</p>
+        <div class="row">
+          <a class="btn" href="#contact">Get started free</a>
+          <a class="btn alt" href="https://drive.google.com/drive/folders/1gR_8lhW0YkwRien47hS9_X6Sk-9DKGzQ" target="_blank" rel="noopener">Watch the 60-second pitch</a>
+        </div>
+      </div>
+      <div class="phone" role="img" aria-label="Preview of the FinPath app showing a monthly budget ring, weekly spending bars and a savings tip">
+        <div class="screen">
+          <div><small>This month</small><div style="font:800 1.4rem 'Bricolage Grotesque',sans-serif">₹18,400 left</div></div>
+          <div class="ring"><span>62%<br>on track</span></div>
+          <div class="bars"><i style="height:45%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:40%"></i><i style="height:65%"></i></div>
+          <div class="tip"><b>Tip:</b> You can move ₹2,000 to savings this week and still stay on budget.</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="features">
+      <h2>Money feels complicated. It doesn't have to.</h2>
+      <p class="lead">Three common problems, and how FinPath fixes each one.</p>
+      <div class="grid">
+        <div class="card"><span class="pain">"I don't know where my money goes."</span><h3>Track everything</h3><p>See income, spending and savings in one clear view, updated as you go.</p></div>
+        <div class="card"><span class="pain">"I'm not sure what to do next."</span><h3>Get personal insights</h3><p>Plain-language suggestions based on your own habits and goals.</p></div>
+        <div class="card"><span class="pain">"I can't find the right service."</span><h3>Find the right fit</h3><p>Discover savings, credit and investment options that match your situation.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Built for how you earn and spend</h2>
+      <p class="lead">One platform, three kinds of people.</p>
+      <ul class="who">
+        <li><b>Students</b>Stretch a small budget and start saving early.</li>
+        <li><b>Professionals</b>Plan salary, bills and long-term goals without spreadsheets.</li>
+        <li><b>Growing entrepreneurs</b>Separate personal and business money and spot opportunities.</li>
+      </ul>
+    </section>
+
+    <section id="how">
+      <h2>Start in three steps</h2>
+      <p class="lead">Most people are set up in under five minutes.</p>
+      <div class="steps">
+        <div><h3>Create your profile</h3><p>Tell us your income, goals and what you want help with.</p></div>
+        <div><h3>See your picture</h3><p>Your spending and savings appear in one simple dashboard.</p></div>
+        <div><h3>Act on advice</h3><p>Follow suggestions and connect to services when you're ready.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="band">
+        <h2>Ready to take control of your financial journey?</h2>
+        <p>Try FinPath today, or see it in action in our short pitch video.</p>
+        <div class="row">
+          <a class="btn" href="mailto:hello@finpath.example?subject=I%20want%20to%20try%20FinPath">Try FinPath</a>
+          <a class="btn alt" href="https://drive.google.com/drive/folders/1gR_8lhW0YkwRien47hS9_X6Sk-9DKGzQ" target="_blank" rel="noopener">Watch the pitch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="grid">
+      <div><h3>Email</h3><a href="mailto:hello@finpath.example">hello@finpath.example</a></div>
+      <div><h3>Phone</h3><a href="tel:+910000000000">+91 00000 00000</a></div>
+      <div><h3>Book a demo</h3><a href="mailto:hello@finpath.example?subject=Demo%20request">Request a 15-minute demo</a></div>
+    </div>
+    <small>© 2026 FinPath. All rights reserved.</small>
+  </footer>
+</div>
+</body>
+</html>
